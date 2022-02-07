@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/openshift-telco/go-netconf-client/netconf"
-	"github.com/openshift-telco/go-netconf-client/netconf/message"
-	"golang.org/x/crypto/ssh"
 	"log"
 	"time"
+
+	"github.com/vrgakos/go-netconf-client/netconf"
+	"github.com/vrgakos/go-netconf-client/netconf/message"
+	"golang.org/x/crypto/ssh"
 )
 
 func main() {

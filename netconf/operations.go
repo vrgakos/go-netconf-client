@@ -20,8 +20,9 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"github.com/openshift-telco/go-netconf-client/netconf/message"
 	"time"
+
+	"github.com/vrgakos/go-netconf-client/netconf/message"
 )
 
 // CreateNotificationStream is a convenient method to create a notification stream registration.

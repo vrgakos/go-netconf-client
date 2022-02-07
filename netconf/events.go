@@ -17,8 +17,9 @@ limitations under the License.
 package netconf
 
 import (
-	"github.com/openshift-telco/go-netconf-client/netconf/message"
 	"time"
+
+	"github.com/vrgakos/go-netconf-client/netconf/message"
 )
 
 /**

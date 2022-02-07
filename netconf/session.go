@@ -11,8 +11,9 @@ package netconf
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/openshift-telco/go-netconf-client/netconf/message"
 	"strings"
+
+	"github.com/vrgakos/go-netconf-client/netconf/message"
 )
 
 // DefaultCapabilities sets the default capabilities of the client library
