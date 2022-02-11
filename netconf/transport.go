@@ -62,7 +62,8 @@ func (t *transportBasicIO) Send(data []byte) error {
 	dataInfo = append(dataInfo, separator...)
 	_, err := t.Write(dataInfo)
 
-	println(string(dataInfo))
+	// TODO: add logging possibility
+	// println(string(dataInfo))
 
 	return err
 }
