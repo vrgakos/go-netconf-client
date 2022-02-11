@@ -30,11 +30,13 @@ type Session struct {
 	IsClosed                    bool
 	Listener                    *Dispatcher
 	IsNotificationStreamCreated bool
+	exitStatus                  chan interface{}
 }
 
 // NewSession creates a new NETCONF session using the provided transport layer.
 func NewSession(t Transport) *Session {
 	s := new(Session)
+	s.exitStatus = make(chan interface{})
 	s.Transport = t
 
 	// Receive server Hello message
@@ -134,6 +136,17 @@ func (session *Session) listen() {
 				println(fmt.Errorf(fmt.Sprintf("unknown received message: \n%s", rawXML)))
 			}
 		}
-		println("exit receiving loop")
+		// println("exit receiving loop")
+		session.Close()
+		close(session.exitStatus)
 	}()
+}
+
+func (session *Session) WaitExit() error {
+	if session.IsClosed {
+		return fmt.Errorf("netconf: session already closed")
+	}
+
+	<-session.exitStatus
+	return nil
 }

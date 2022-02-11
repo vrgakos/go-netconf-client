@@ -135,7 +135,15 @@ func DialSSHTimeout(target string, config *ssh.ClientConfig, timeout time.Durati
 		}
 	}()
 
-	return NewSession(t), nil
+	sess := NewSession(t)
+
+	go func() {
+		t.sshClient.Wait()
+		t.sshClient.Close()
+		sess.Close()
+	}()
+
+	return sess, nil
 }
 
 // SSHConfigPubKeyFile is a convenience function that takes a username, private key
